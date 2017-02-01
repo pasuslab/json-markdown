@@ -9,11 +9,11 @@ function Markdown(tokens) {
 }
 objectAssign(Markdown.prototype, {
   required(values, key) {
-    this.lines.push(`Required${key ? ` ${key}` : ''}: ${values.join(', ')}`, '');
+    //this.lines.push(`Required${key ? ` ${key}` : ''}: ${values.join(', ')}`, '');
   },
 
   allowed(string, key) {
-    this.lines.push(`Allowed${key ? ` ${key}` : ''}: ${string}`, '');
+    // this.lines.push(`Allowed${key ? ` ${key}` : ''}: ${string}`, '');
   },
 
   anker(string) {
@@ -22,15 +22,18 @@ objectAssign(Markdown.prototype, {
 
   headline(string, size) {
     const headline = new Array((size || 1) + 1).join('#');
-    this.lines.push(headline + string, '');
+    this.lines.push(headline + ' ' + string, '');
   },
 
   description(string) {
     if (_.isArray(string)) {
       string = `*${string.join('\n* ')}`;
     }
-    const description = string || 'add description to json file';
-    this.lines.push(`__${description.trim()}__`, '');
+    if (string) {
+      string = string.trim();
+    }
+    const description = string || '&nbsp;'; //'add description to json file';
+    this.lines.push(`*${description}*`, '');
   },
 
   table(items) {
@@ -38,12 +41,12 @@ objectAssign(Markdown.prototype, {
     const allowed = {};
     this.lines.push('| Name    | Type    | Description | Example |');
     this.lines.push('| ------- | ------- | ----------- | ------- |');
-
     _.forIn(items, (property) => {
       let name = property.name;
       const type = property.type;
       const description = property.description || '';
       const example = property.example || '';
+      const required = property.required?'**Required.** ':'';
 
       if (self.tokens.hasToken(property.name)) {
         name = self.anker(property.name);
@@ -52,7 +55,7 @@ objectAssign(Markdown.prototype, {
       if (property.allowed && !self.tokens.hasToken(name)) {
         allowed[name] = property.allowed;
       }
-      self.lines.push(`| ${name} | ${type} | ${description} | ${example} |`);
+      self.lines.push(`| ${name} | *${type}* | ${required}${description} | ${example} |`);
     });
 
     _.forIn(allowed, (property, myKey) => {
