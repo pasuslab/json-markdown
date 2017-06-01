@@ -178,7 +178,7 @@ objectAssign(Parser.prototype, {
 
     _.forIn(properties, (value, key) => {
       value = self._loadReferencesForItem(value);
-      if (value.type === 'object') {
+      if (value.type === 'object' || (Array.isArray(value.type) && value.type.includes('object'))) {
         subProps[key] = value;
       }
       if (value.items && value.items.type === 'object') {

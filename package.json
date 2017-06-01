@@ -1,21 +1,82 @@
 {
-  "name": "json-markdown",
-  "version": "1.0.6",
-  "description": "Generate Markdown documentation for your JSON schema",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "maintainer": [
-    "Jeremy Rajan <jeremyrajan@gmail.com> (github.com/jeremyrajan)"
+  "_args": [
+    [
+      {
+        "raw": "json-markdown@git+https://github.com/pasuslab/json-markdown.git",
+        "scope": null,
+        "escapedName": "json-markdown",
+        "name": "json-markdown",
+        "rawSpec": "git+https://github.com/pasuslab/json-markdown.git",
+        "spec": "git+https://github.com/pasuslab/json-markdown.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:pasuslab/json-markdown.git",
+          "sshUrl": "git+ssh://git@github.com/pasuslab/json-markdown.git",
+          "httpsUrl": "git+https://github.com/pasuslab/json-markdown.git",
+          "gitUrl": "git://github.com/pasuslab/json-markdown.git",
+          "shortcut": "github:pasuslab/json-markdown",
+          "directUrl": "https://raw.githubusercontent.com/pasuslab/json-markdown/master/package.json"
+        }
+      },
+      "/home/developer/projects/hubdoc"
+    ]
   ],
+  "_from": "git+https://github.com/pasuslab/json-markdown.git",
+  "_id": "json-markdown@1.0.6",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/json-markdown",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "json-markdown@git+https://github.com/pasuslab/json-markdown.git",
+    "scope": null,
+    "escapedName": "json-markdown",
+    "name": "json-markdown",
+    "rawSpec": "git+https://github.com/pasuslab/json-markdown.git",
+    "spec": "git+https://github.com/pasuslab/json-markdown.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:pasuslab/json-markdown.git",
+      "sshUrl": "git+ssh://git@github.com/pasuslab/json-markdown.git",
+      "httpsUrl": "git+https://github.com/pasuslab/json-markdown.git",
+      "gitUrl": "git://github.com/pasuslab/json-markdown.git",
+      "shortcut": "github:pasuslab/json-markdown",
+      "directUrl": "https://raw.githubusercontent.com/pasuslab/json-markdown/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/pasuslab/json-markdown.git#5c6a8b8a7281c67153f88d2d7d158fa0af039810",
+  "_shasum": "e2484743e9508182335b0bac4d9dded7bf28b12c",
+  "_shrinkwrap": null,
+  "_spec": "json-markdown@git+https://github.com/pasuslab/json-markdown.git",
+  "_where": "/home/developer/projects/hubdoc",
+  "bin": {
+    "json-markdown": "bin/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/jeremyrajan/json-markdown/issues"
+  },
   "dependencies": {
     "chalk": "^1.1.3",
     "lodash": "^4.17.2",
     "object-assign": "^4.1.0",
-    "yargs": "^6.5.0",
-    "showdown": "^1.6.0"
+    "showdown": "^1.6.0",
+    "yargs": "^6.5.0"
   },
+  "description": "Generate Markdown documentation for your JSON schema",
+  "devDependencies": {
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb": "13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1"
+  },
+  "gitHead": "5c6a8b8a7281c67153f88d2d7d158fa0af039810",
+  "homepage": "https://github.com/jeremyrajan/json-markdown#readme",
   "keywords": [
     "json-schema",
     "markdown",
@@ -25,21 +86,20 @@
     "jsonschema-md"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jeremyrajan/json-markdown/issues"
-  },
+  "main": "index.js",
+  "maintainer": [
+    "Jeremy Rajan <jeremyrajan@gmail.com> (github.com/jeremyrajan)"
+  ],
+  "name": "json-markdown",
+  "optionalDependencies": {},
+  "readme": "# json-markdown\n\nThis Project is fork of https://github.com/joxoo/jsonschema-md. With added features. Thank you [joxoo](https://github.com/joxoo).\n\n[![Build Status](https://travis-ci.org/jeremyrajan/json-markdown.svg?branch=master)](https://travis-ci.org/jeremyrajan/json-markdown)\n\n## About\njson-markdown is a simple tool to generate documentation for your JSON schema. The lib provides a CLI api and pro-grammatical api for use in your applications.\n\n## Usage\n\n```\nnpm install --save [-g] json-markdown\n```\n\n### CLI\n```\njson-markdown <location-to-your-file.json> --w=true/false\n```\n\nYou can pass -w=true/false, if you want to write to a file or not. By default its true.\n\nThis will generate the markdown from your schema and create `SCHEMA.md` in the current directory. You can also provide an output file, to which you want to write:\n\n```\njson-markdown <location-to-your-file.json> <output-file-location.md> --w=true/false\n```\n\n### API usage.\n```javascript\nconst jsonmarkdown = require('json-markdown');\nconst schemaLoc = './product.json';\nconst outputFile = 'output-file.md'; // if you don't provide an output file, it will create an .md from your schema filename.\n// the third argument defines, if you want to write to file or not. Set it to false, if you dont need to create a markdown yet.\njsonmarkdown.process(schemaLoc, outputFile, true, (err, result) => {\n  console.log(result);\n});\n\n```\n\nReport issues: https://github.com/jeremyrajan/jsonschema-md/issues\n\nHope it helps, someone :).\n",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeremyrajan/json-markdown"
+    "url": "git+https://github.com/jeremyrajan/json-markdown.git"
   },
-  "bin": {
-    "json-markdown": "bin/index.js"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^3.0.1",
-    "eslint": "^3.11.1",
-    "eslint-config-airbnb": "13.0.0",
-    "eslint-plugin-import": "^2.2.0"
-  }
+  "version": "1.0.6"
 }
